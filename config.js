@@ -5,7 +5,8 @@ environments.staging = {
     'http': 8000,
     'https': 4430
   },
-  'envName': 'staging'
+  'envName': 'staging',
+  'hashingSecret': 'Secr3t'
 };
 
 environments.production = {
@@ -13,7 +14,8 @@ environments.production = {
     'http': 8080,
     'https': 5000
   },
-  'envName': 'production'
+  'envName': 'production',
+  'hashingSecret': 'S3cr3tPr0d'
 };
 
 var currentEnv = typeof(process.env.NODE_ENV) === 'string' ? process.env.NODE_ENV.toLowerCase() : 'staging';

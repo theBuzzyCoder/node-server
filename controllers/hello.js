@@ -1,5 +1,5 @@
 var hello = function (data, callback) {
-  let payload = (!data.payload) ? {'name': 'world'} : JSON.parse(data.payload);
+  let payload = (!data.payload) ? {'name': 'world'} : data.payload;
   payload = typeof(payload) !== 'object' ? {'name': payload} : payload;
   payload = Array.isArray(payload) ? {'name': payload.join(', ')} : payload;
   callback(200, {

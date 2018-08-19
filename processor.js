@@ -1,5 +1,6 @@
 const url = require('url');
 const router = require('./controllers');
+const helpers = require('./lib/helpers');
 
 var processRequest = function (req, res) {
   let parsedUrl = url.parse(req.url, true);
@@ -11,7 +12,7 @@ var processRequest = function (req, res) {
   let StringDecoder = require('string_decoder').StringDecoder;
   let decoder = new StringDecoder('utf-8');
   let buffer = "";
-  
+
   req.on('data', function (data) {
     buffer += decoder.write(data)
   });
@@ -19,16 +20,16 @@ var processRequest = function (req, res) {
   req.on('end', function () {
     buffer += decoder.end();
 
-    var chosen = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : router.notFound;
     var data = {
       'trimmedPath': trimmedPath,
       'headers': headers,
       'method': method,
-      'payload': buffer,
+      'payload': helpers.parseJsonToObject(buffer),
       'query_string': query_string
     }
 
-    chosen(data, function (statusCode, payLoad) {
+    var chosenAPI = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : router.notFound;
+    chosenAPI(data, function (statusCode, payLoad) {
       statusCode = typeof(statusCode) === 'number' ? statusCode : 200;
       payLoad = typeof(payLoad) === 'object' ? payLoad : {};
       payLoad = JSON.stringify(payLoad);
