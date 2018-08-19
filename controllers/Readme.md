@@ -8,11 +8,15 @@ Allows to create, edit, update and delete user information
 
 ### CRUD Operations
 
-#### `GET /api/v1/users?phone={phone}`
+#### Get User
+
+`GET /api/v1/users?phone={phone}`
 
 Returns the users information
 
-#### `POST /api/v1/users`
+#### Create User
+
+`POST /api/v1/users`
 
 Creates new user if user already doesn't exist. If exists, sends error response
 
@@ -27,7 +31,9 @@ Creates new user if user already doesn't exist. If exists, sends error response
 }
 ```
 
-#### `PUT /api/v1/users`
+#### Update User
+
+`PUT /api/v1/users`
 
 Updates user only if exists otherwise sends error response.
 
@@ -39,6 +45,8 @@ Updates user only if exists otherwise sends error response.
 }
 ```
 
-#### `DELETE /api/v1/users?phone={phone}`
+#### Delete User
+
+`DELETE /api/v1/users?phone={phone}`
 
 Deletes the user if exists, otherwise sends 500 error response.
