@@ -15,4 +15,6 @@ The idea is not to use external npm modules and write the server using nodejs on
 
 - An HTTP/HTTPS server
 - Hello World
-- Ability to create a user, update user information, read user information and delete user.
+- (API only) Ability to create a user, update user information, read user information and delete user.
+
+Note: This application doesn't have a front end yet.
