@@ -5,7 +5,7 @@ const helpers = require('./lib/helpers');
 var processRequest = function (req, res) {
   let parsedUrl = url.parse(req.url, true);
   let path = parsedUrl.pathname;
-  let trimmedPath = path.replace(/^\/+|\/+$/g, '');
+  var trimmedPath = path.replace(/^\/+|\/+$/g, '');
   let query_string = parsedUrl.query;
   let method = req.method.toLowerCase();
   let headers = req.headers;
@@ -28,7 +28,13 @@ var processRequest = function (req, res) {
       'query_string': query_string
     }
 
-    var chosenAPI = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : router.notFound;
+    if (trimmedPath.startsWith('api/v1/')) {
+      trimmedPath = trimmedPath.replace(/api\/v1\//g, '');
+      var chosenAPI = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : router.notFound;
+    } else {
+      var chosenAPI = router.notFound;
+    }
+
     chosenAPI(data, function (statusCode, payLoad) {
       statusCode = typeof(statusCode) === 'number' ? statusCode : 200;
       payLoad = typeof(payLoad) === 'object' ? payLoad : {};

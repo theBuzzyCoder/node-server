@@ -2,21 +2,21 @@
 
 Contains logic to all the API's that are allowed in this application
 
-## /users
+## Users API
 
 Allows to create, edit, update and delete user information
 
 ### CRUD Operations
 
-#### `GET /users?phone={phone}`
+#### `GET /api/v1/users?phone={phone}`
 
 Returns the users information
 
-#### `POST /users`
+#### `POST /api/v1/users`
 
 Creates new user if user already doesn't exist. If exists, sends error response
 
-**Payload** 
+**Payload**
 ```json
 {
   "firstName": "firstName",
@@ -27,11 +27,11 @@ Creates new user if user already doesn't exist. If exists, sends error response
 }
 ```
 
-#### `PUT /users`
+#### `PUT /api/v1/users`
 
 Updates user only if exists otherwise sends error response.
 
-**Payload** 
+**Payload**
 ```json
 {
   "firstName": "newFirstName",
@@ -39,6 +39,6 @@ Updates user only if exists otherwise sends error response.
 }
 ```
 
-#### `DELETE /users?phone={phone}`
+#### `DELETE /api/v1/users?phone={phone}`
 
 Deletes the user if exists, otherwise sends 500 error response.
