@@ -23,8 +23,7 @@ Creates new user if user already doesn't exist. If exists, sends error response
   "phone": "10 digit number",
   "tosAgreement": true,
   "password": "secret"
-}
-```
+}```
 
 #### `PUT /users`
 
@@ -34,8 +33,7 @@ Updates user only if exists otherwise sends error response.
 {
   "firstName": "newFirstName",
   "phone": "10 digit number"
-}
-```
+}```
 
 #### `DELETE /users?phone={phone}`
 
