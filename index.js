@@ -3,7 +3,7 @@ const https = require('https');
 const fs = require('fs');
 
 const config = require('./config');
-const processRequest = require('./process_request');
+const processRequest = require('./processor');
 
 var httpServer = http.createServer(function (req, res) {
   console.log("Received Request in http!");
